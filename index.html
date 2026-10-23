@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Happy Birthday Zaru 💗</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Great+Vibes&display=swap');
+*{box-sizing:border-box}body{margin:0;min-height:100vh;color:#fff8fc;font-family:'DM Sans',sans-serif;background:radial-gradient(ellipse at top,#65204f,#210d2b 52%,#100818);overflow-x:hidden;text-align:center}
+#stars,#effects{position:fixed;inset:0;pointer-events:none;overflow:hidden}.star{position:absolute;width:3px;height:3px;background:white;border-radius:50%;animation:twinkle 2s infinite alternate}@keyframes twinkle{to{opacity:.15;transform:scale(.5)}}
+main{position:relative;z-index:1;max-width:960px;margin:auto;padding:30px 18px 55px}.crown{font-size:42px;animation:bob 2s infinite ease-in-out}@keyframes bob{50%{transform:translateY(-8px) rotate(4deg)}}
+.tag{letter-spacing:3px;text-transform:uppercase;font-size:11px;color:#ffc6e4;font-weight:bold}h1{font:clamp(54px,11vw,100px)/1.1 'Great Vibes',cursive;color:#ffb5dc;text-shadow:0 0 28px #ff58af77;margin:12px 0}h2{font-size:clamp(20px,4vw,30px);margin:8px 0}p{line-height:1.8;color:#f6dce9;max-width:680px;margin:15px auto}.date{display:inline-block;padding:9px 18px;border:1px solid #ffb5dc77;border-radius:999px;color:#ffe4f2;margin:12px 0}
+button{border:0;border-radius:999px;padding:14px 22px;margin:8px 5px;font:700 14px 'DM Sans';color:#35142f;background:linear-gradient(100deg,#ffb5dc,#ffd7a2);cursor:pointer}button.alt{background:#ffffff12;border:1px solid #ffffff35;color:white}.hint{font-size:12px;color:#d8b6cf;margin-top:8px}
+.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:28px 0}.photo{padding:6px;border-radius:18px;background:linear-gradient(135deg,#ffb5dc,#a879ff,#ffd7a2);box-shadow:0 12px 32px #0005;transform:rotate(var(--r));transition:.3s}.photo:hover{transform:translateY(-5px) rotate(0)}img{display:block;width:100%;height:250px;object-fit:cover;border-radius:13px}.caption{font-size:12px;padding:7px 0 2px;color:#35142f}.letter{max-width:720px;margin:25px auto;padding:25px 22px;border:1px solid #ffffff25;border-radius:24px;background:#ffffff0b}.from{color:#ffb5dc;font-weight:bold}.footer{margin-top:30px;color:#c6a3bf;font-size:11px;letter-spacing:2px}
+.balloon{position:fixed;bottom:-100px;width:34px;height:44px;border-radius:50%;animation:rise 9s linear forwards;pointer-events:none}@keyframes rise{to{transform:translateY(-120vh) rotate(15deg);opacity:.1}}.bit{position:fixed;top:-20px;width:8px;height:12px;animation:fall 4s linear forwards;pointer-events:none}@keyframes fall{to{transform:translateY(110vh) rotate(700deg);opacity:.2}}
+@media(max-width:700px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}img{height:220px}}@media(max-width:370px){img{height:175px}}
+</style></head><body><div id="stars"></div><div id="effects"></div>
+<main><div class="crown">👑🎂👑</div><div class="tag">A little birthday magic, made just for you</div>
+<h1>Happy Birthday</h1><h2>Sweet Zaru 💗</h2><div class="date">🎀 25 December 🎀</div>
+<p>Today is all about you, Zaru. May your smile always shine, your heart stay peaceful, and your life be filled with love, laughter, and beautiful surprises. You deserve so many wonderful things. ✨</p>
+<button id="open">🎁 Open Your Surprise</button><button class="alt" id="music">🎵 Play Birthday Tune</button><div class="hint" id="hint">Tap “Open Your Surprise” to start the music and celebration.</div>
+<section class="gallery">
+<div class="photo" style="--r:-2deg"><img src="zaru-photo-1.jpeg" alt="Zaru"><div class="caption">A little moment 💗</div></div>
+<div class="photo" style="--r:2deg"><img src="zaru-photo-2.jpeg" alt="Zaru"><div class="caption">Beautiful memories ✨</div></div>
+<div class="photo" style="--r:-1deg"><img src="zaru-photo-3.jpeg" alt="Zaru"><div class="caption">Keep shining 🌸</div></div>
+<div class="photo" style="--r:2deg"><img src="zaru-photo-4.jpeg" alt="Zaru"><div class="caption">Always special 💞</div></div>
+</section>
+<section class="letter"><div class="tag">A message from Huzaifa</div><p>Dear Zaru, 💖</p>
+<p>Happy Birthday! May Allah bless you with happiness, good health, success, and peace in every step of life. May all your beautiful wishes come true, and may every new year bring you more reasons to smile. Stay blessed, keep smiling, and never stop shining. 🌙✨</p>
+<p class="from">With lots of best wishes,<br>Huzaifa 💌</p></section><div class="footer">MADE WITH LOVE · JUST FOR ZARU</div></main>
+<script>
+for(let i=0;i<95;i++){let s=document.createElement('i');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDelay=Math.random()*3+'s';document.getElementById('stars').appendChild(s)}
+let ctx=null,playing=false,timer;const notes=[[392,.32],[392,.32],[440,.65],[392,.65],[523,.65],[494,1],[392,.32],[392,.32],[440,.65],[392,.65],[587,.65],[523,1],[392,.32],[392,.32],[784,.65],[659,.65],[523,.65],[494,.65],[440,1],[698,.32],[698,.32],[659,.65],[523,.65],[587,.65],[523,1.1]];
+function stop(){if(timer)clearTimeout(timer);if(ctx){ctx.close().catch(()=>{});ctx=null}playing=false}
+function play(){stop();let AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;ctx=new AC();ctx.resume();playing=true;let t=ctx.currentTime+.1;notes.forEach(([f,d])=>{let o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.15,t+.03);g.gain.setValueAtTime(.15,t+d*.7);g.gain.exponentialRampToValueAtTime(.0001,t+d*.95);o.connect(g);g.connect(ctx.destination);o.start(t);o.stop(t+d);t+=d+.05});timer=setTimeout(()=>{playing=false;document.getElementById('music').textContent='🎵 Replay Birthday Tune'},(t-ctx.currentTime)*1000+300);document.getElementById('music').textContent='🔁 Replay Birthday Tune';document.getElementById('hint').textContent='🎶 Happy Birthday, Zaru! 🎶'}
+function celebrate(){let colors=['#ffb5dc','#ffd166','#b9a0ff','#fff','#ff70a6'];for(let i=0;i<130;i++){let b=document.createElement('i');b.className='bit';b.style.left=Math.random()*100+'%';b.style.background=colors[i%colors.length];b.style.animationDuration=2+Math.random()*3+'s';document.body.appendChild(b);setTimeout(()=>b.remove(),6000)}for(let i=0;i<15;i++){let b=document.createElement('i');b.className='balloon';b.style.left=Math.random()*100+'%';b.style.background=colors[i%colors.length];b.style.animationDuration=7+Math.random()*7+'s';document.body.appendChild(b);setTimeout(()=>b.remove(),15000)}}
+document.getElementById('open').onclick=()=>{celebrate();if(!playing)play();document.getElementById('open').textContent='🎉 Happy Birthday, Zaru! 🎉';document.getElementById('hint').textContent='Made with love by Huzaifa 💗'};
+document.getElementById('music').onclick=()=>{if(playing){stop();document.getElementById('music').textContent='🎵 Play Birthday Tune';document.getElementById('hint').textContent='Music paused.'}else play()};
+// Best-effort autoplay: audible playback may be blocked by browser policy until a user gesture.
+window.addEventListener('DOMContentLoaded',()=>{try{play()}catch(e){document.getElementById('hint').textContent='Tap once anywhere to start the birthday song 🎵'}});
+document.addEventListener('pointerdown',()=>{if(!playing){try{play()}catch(e){}}},{once:true});
+
+// Attempt autoplay as soon as the page opens. Browsers may block audible autoplay;
+// if blocked, the visitor can tap anywhere once to start the tune.
+window.addEventListener('load',()=>{
+  try {
+    play();
+    document.getElementById('hint').textContent='If your browser blocks automatic sound, tap anywhere once to start the birthday tune 💗';
+  } catch(e) {
+    document.getElementById('hint').textContent='Tap anywhere once to start the birthday tune 💗';
+  }
+});
+document.addEventListener('pointerdown', function startAfterTap(){
+  if(!playing) play();
+  document.removeEventListener('pointerdown', startAfterTap);
+}, {once:true});
+</script></body></html>
